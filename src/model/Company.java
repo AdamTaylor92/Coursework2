@@ -14,5 +14,10 @@ public class Company {
 		this.projectList = projectList;
 	}
 	
+	public void AddProject (Project P) { //takes the Project object passed to it and adds it to the list.
+		
+		this.projectList.add(P);
+		
+	}
 	
 }
