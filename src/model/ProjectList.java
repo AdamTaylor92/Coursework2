@@ -26,5 +26,9 @@ public class ProjectList {
 		
 	}
 	
+	public void RemoveProject (Project P) {
+		this.projectList.remove(P);
+	}
+	
 	
 }

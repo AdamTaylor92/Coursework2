@@ -42,7 +42,7 @@ public void setStartDateEndDate(String startDateEndDate) {
 
 @Override
 public String toString() {
-	return  projectTitle + StartDateEndDate;
+	return  projectTitle + " " + StartDateEndDate;
 }
 	
 }

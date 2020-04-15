@@ -63,7 +63,12 @@ public class CompanyTest{
 	}
 
 	private static void RemoveProject(ProjectList List) {
-		// TODO Auto-generated method stub
+		
+		String Name = Input.getString("Please Enter the Name of the project you would like to delete");
+		String sDateEDate = Input.getString("Please enter the Start and end dates of the project in the format DD/MM/YY - DD/MM/YY ");
+		
+		Project toBeRemoved = new Project (Name, sDateEDate);
+		List.RemoveProject(toBeRemoved);
 		
 	}
 
