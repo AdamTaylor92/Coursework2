@@ -1,13 +1,16 @@
 package view;
-
-import model.ProjectList;
 import model.Project;
+import model.SortedADT;
+import model.SortedADT.NotUniqueException;
+import model.SortedLinkedList;
 
 public class CompanyTest{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NotUniqueException {
 		
-		ProjectList List = new ProjectList();
+		//ProjectList List = new ProjectList();
+		SortedADT Sorted = new SortedLinkedList();
+		
 		
 				int userInput = 0;
 	
@@ -15,7 +18,7 @@ public class CompanyTest{
 		do {
 				showMenu();
 				userInput = askForInput();
-				evalInput(userInput, List);
+				evalInput(userInput, Sorted);
 				
 				
 		}
@@ -24,26 +27,26 @@ public class CompanyTest{
 	
 	}
 
-	private static void evalInput(int userInput, ProjectList List) {
+	private static void evalInput(int userInput, SortedADT sorted) throws NotUniqueException {
 		
 		switch(userInput)
 		{
 			case 1:
-					addProject(List);
+					addProject(sorted);
 					break;
 			case 2:
-					showProject(List);
+					showProject(sorted);
 					break;
 			case 3:
-					RemoveProject(List);
+					RemoveProject(sorted);
 					break;
 			case 4:
-					showAllProjects(List);
+					showAllProjects(sorted);
 					break;
 			case 10:
 				System.out.println("Are you sure you want to quit if, yes select 20"); 
 				userInput = askForInput();
-				evalInput(userInput, List);
+				evalInput(userInput, sorted);
 					break;
 			case 20:
 				System.out.println("Good Bye!");
@@ -57,35 +60,36 @@ public class CompanyTest{
 		
 	}
 
-	private static void showAllProjects(ProjectList List) {
+	private static void showAllProjects(SortedADT sorted) {
 			System.out.println("This is all current Projects");
-			System.out.println(List.getProjectList().toString());
+			System.out.println(sorted.toString() );
 	}
 
-	private static void RemoveProject(ProjectList List) {
+	private static void RemoveProject(SortedADT sorted) {
 		
-		String Name = Input.getString("Please Enter the Name of the project you would like to delete");
-		String sDateEDate = Input.getString("Please enter the Start and end dates of the project in the format DD/MM/YY - DD/MM/YY ");
 		
-		Project toBeRemoved = new Project (Name, sDateEDate);
-		List.RemoveProject(toBeRemoved);
 		
 	}
 
-	private static void showProject(ProjectList List) {
+	private static void showProject(SortedADT sorted) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static void addProject(ProjectList List) {
+	private static void addProject(SortedADT sorted) throws NotUniqueException {
 		
 		String Name = Input.getString("Please enter the project name ");
 		String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
 		
-		Project toBeAdded = new Project (Name,startDateEndDate); // creates the project object to add 
-		List.AddProject(toBeAdded);
+		 Project toBeAdded =  new Project (Name,startDateEndDate); // creates the project object to add 
 		
-		
+		try {
+		 sorted.insert(toBeAdded);
+		}
+		catch (SortedADT.NotUniqueException e)
+		{
+			System.out.println("That project already exists. Please enter a different project.");
+		}
 	}
 
 	private static int askForInput() {

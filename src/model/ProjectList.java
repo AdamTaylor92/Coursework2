@@ -22,6 +22,7 @@ public class ProjectList {
 	
 	public void AddProject (Project P) { //takes the Project object passed to it and adds it to the list.
 		
+	
 		this.projectList.addFirst(P);
 		
 	}

@@ -2,7 +2,7 @@ package model;
 
 
 
-public class Project {
+public class Project implements Comparable{
 
 	
 	
@@ -43,6 +43,12 @@ public void setStartDateEndDate(String startDateEndDate) {
 @Override
 public String toString() {
 	return  projectTitle + " " + StartDateEndDate;
+}
+
+@Override
+public int compareTo(Object o) {
+	// TODO Auto-generated method stub
+	return 0;
 }
 	
 }
