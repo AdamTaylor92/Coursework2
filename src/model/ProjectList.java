@@ -2,9 +2,15 @@ package model;
 
 import java.util.LinkedList;
 
-public class Company {
+//Class to deal with the list of projects
+
+public class ProjectList {
 		
 	private LinkedList projectList;
+
+	public ProjectList() {
+		
+		}
 
 	public LinkedList getProjectList() {
 		return projectList;
@@ -16,7 +22,7 @@ public class Company {
 	
 	public void AddProject (Project P) { //takes the Project object passed to it and adds it to the list.
 		
-		this.projectList.add(P);
+		this.projectList.addFirst(P);
 		
 	}
 	

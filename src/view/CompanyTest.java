@@ -1,14 +1,13 @@
 package view;
 
-
+import model.ProjectList;
 import model.Project;
-import model.Company;
 
 public class CompanyTest{
 
 	public static void main(String[] args) {
 		
-		Company List = new Company();
+		ProjectList List = new ProjectList();
 		
 				int userInput = 0;
 	
@@ -20,12 +19,12 @@ public class CompanyTest{
 				
 				
 		}
-		while (userInput !=10); // Check this with the menu - Might need to change to 20
+		while (userInput !=10); 
 			
 	
 	}
 
-	private static void evalInput(int userInput, Company List) {
+	private static void evalInput(int userInput, ProjectList List) {
 		
 		switch(userInput)
 		{
@@ -42,7 +41,7 @@ public class CompanyTest{
 					showAllProjects(List);
 					break;
 			case 10:
-				System.out.println("Are you sure you want to quit if, yes select 20"); //Check this later so you know if it works
+				System.out.println("Are you sure you want to quit if, yes select 20"); 
 				userInput = askForInput();
 				evalInput(userInput, List);
 					break;
@@ -58,23 +57,28 @@ public class CompanyTest{
 		
 	}
 
-	private static void showAllProjects(Company List) {
+	private static void showAllProjects(ProjectList List) {
 			System.out.println("This is all current Projects" + List.toString() );
 		
 	}
 
-	private static void RemoveProject(Company List) {
+	private static void RemoveProject(ProjectList List) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static void showProject(Company List) {
+	private static void showProject(ProjectList List) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static void addProject(Company List) {
+	private static void addProject(ProjectList List) {
 		
+		String Name = Input.getString("Please enter the project name ");
+		String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
+		
+		Project toBeAdded = new Project (Name,startDateEndDate); // creates the project object to add 
+		List.AddProject(toBeAdded);
 		
 		
 	}
