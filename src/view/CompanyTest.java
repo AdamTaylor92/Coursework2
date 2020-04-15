@@ -1,6 +1,7 @@
 package view;
 import model.Project;
 import model.SortedADT;
+import model.SortedADT.NotFoundException;
 import model.SortedADT.NotUniqueException;
 import model.SortedLinkedList;
 
@@ -62,29 +63,63 @@ public class CompanyTest{
 
 	private static void showAllProjects(SortedADT sorted) {
 			System.out.println("This is all current Projects");
-			System.out.println(sorted.toString() );
+			
 	}
 
 	private static void RemoveProject(SortedADT sorted) {
 		
+		try {
+			
+			String Name = Input.getString("Please enter the project name you wish to find ");
+			String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
+			
+			Project toBeAdded =  new Project(Name, startDateEndDate);
+			sorted.remove(toBeAdded);
+			System.out.println(toBeAdded.toString() + "has been removed");
+
+			
+		} catch (NotFoundException e) {
+			
+			System.out.println("That project doesn't exist in the list.");;
+		}
 		
 		
 	}
 
 	private static void showProject(SortedADT sorted) {
-		// TODO Auto-generated method stub
+		
+		
+		
+		try {
+			String Name = Input.getString("Please enter the project name you wish to find ");
+			String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
+			
+			Project toBeAdded =  new Project(Name, startDateEndDate);
+			sorted.find(toBeAdded);
+			System.out.println(toBeAdded.toString());
+
+			
+		} catch (NotFoundException e) {
+			
+			System.out.println("That project doesn't exist in the list.");;
+		}
+		
+		
+		
 		
 	}
 
 	private static void addProject(SortedADT sorted) throws NotUniqueException {
 		
+		
 		String Name = Input.getString("Please enter the project name ");
+
 		String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
 		
-		 Project toBeAdded =  new Project (Name,startDateEndDate); // creates the project object to add 
+	    Project toBeAdded =  new Project (Name,startDateEndDate); // creates the project object to add 
 		
 		try {
-		 sorted.insert(toBeAdded);
+		 sorted.insert(toBeAdded); //adds the object
 		}
 		catch (SortedADT.NotUniqueException e)
 		{

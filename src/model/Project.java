@@ -1,7 +1,5 @@
 package model;
 
-
-
 public class Project implements Comparable{
 
 	
@@ -47,8 +45,14 @@ public String toString() {
 
 @Override
 public int compareTo(Object o) {
-	// TODO Auto-generated method stub
-	return 0;
+	Project Aux = (Project) o; 
+	
+	
+	int answer = this.projectTitle.compareToIgnoreCase(Aux.getProjectTitle());
+	
+	return answer;
 }
+
+
 	
 }
