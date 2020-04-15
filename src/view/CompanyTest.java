@@ -62,8 +62,9 @@ public class CompanyTest{
 	}
 
 	private static void showAllProjects(SortedADT sorted) {
-			System.out.println("This is all current Projects");
 			
+		System.out.println(sorted.toString());
+				
 	}
 
 	private static void RemoveProject(SortedADT sorted) {
