@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 
 
 public class Project {
@@ -43,7 +42,7 @@ public void setStartDateEndDate(String startDateEndDate) {
 
 @Override
 public String toString() {
-	return  projectTitle + " Dates:" + StartDateEndDate;
+	return  projectTitle + StartDateEndDate;
 }
 	
 }

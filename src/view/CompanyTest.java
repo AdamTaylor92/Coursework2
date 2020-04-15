@@ -58,8 +58,8 @@ public class CompanyTest{
 	}
 
 	private static void showAllProjects(ProjectList List) {
-			System.out.println("This is all current Projects" + List.toString() );
-		
+			System.out.println("This is all current Projects");
+			System.out.println(List.getProjectList().toString());
 	}
 
 	private static void RemoveProject(ProjectList List) {

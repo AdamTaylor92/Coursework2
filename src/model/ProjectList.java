@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class ProjectList {
 		
-	private LinkedList projectList;
+	private LinkedList projectList = new LinkedList();
 
 	public ProjectList() {
 		
@@ -25,5 +25,6 @@ public class ProjectList {
 		this.projectList.addFirst(P);
 		
 	}
+	
 	
 }
