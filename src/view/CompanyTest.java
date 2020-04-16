@@ -62,9 +62,9 @@ public class CompanyTest{
 	}
 
 	private static void showAllProjects(SortedADT sorted) {
-			
-		System.out.println(sorted.toString());
-				
+		
+			System.out.println(sorted.toString());
+						
 	}
 
 	private static void RemoveProject(SortedADT sorted) {
