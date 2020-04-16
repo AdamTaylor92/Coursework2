@@ -4,11 +4,11 @@ import java.util.LinkedList;
 
 //Class to deal with the list of projects
 
-public class ProjectList {
+public class Company {
 		
 	private LinkedList projectList = new LinkedList();
 
-	public ProjectList() {
+	public Company() {
 		
 		}
 
