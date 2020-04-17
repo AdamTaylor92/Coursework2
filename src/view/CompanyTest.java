@@ -128,11 +128,19 @@ public class CompanyTest{
 		}
 	}
 
-	private static int askForInput() {
+	private static Integer askForInput() throws NumberFormatException {
+		try
+			{
+				return Input.getInteger("Please select an option");
+			}
+		catch(NumberFormatException e)
+			{
+			System.out.println("Invalid Selection - Please try again");
+			return 0;
+			}
 		
-		return Input.getInteger("Please select an option");
-	}
-
+			
+		}
 	private static void showMenu() {
 		
 		System.out.println("Welcome to the Project List. Please choose an option");

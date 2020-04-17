@@ -1,3 +1,4 @@
+import model.SortedADT;
 
 public class BinarySearchTree implements SortedADT {
 
