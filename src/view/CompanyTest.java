@@ -9,7 +9,7 @@ public class CompanyTest{
 
 	public static void main(String[] args) throws NotUniqueException {
 		
-		//ProjectList List = new ProjectList();
+		
 		SortedADT Sorted = new SortedLinkedList();
 		
 		
