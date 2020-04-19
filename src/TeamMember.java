@@ -59,7 +59,7 @@ public class TeamMember implements Comparable{
 
 	@Override
 	public String toString() {
-		return "TeamMember Name=" + Name + ", EID=" + EID + ", Department=" + Department;
+		return "TeamMember" + Name + EID + Department;
 	}
 
 }

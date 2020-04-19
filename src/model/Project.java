@@ -1,25 +1,42 @@
 package model;
 
+ 
+
 public class Project implements Comparable{
 
 	
 	
 	private String projectTitle;
 	private String StartDateEndDate;
+	private SortedADT MemberTree;
 	
 	
 	public Project() {
 		this.projectTitle = "";
 		this.StartDateEndDate = "";
+		this.MemberTree = new BinarySearchTree();
+		
+		
+		
 	}
 	
-public Project(String projectTitle, String StartDateEndDate)
+public Project(String projectTitle, String StartDateEndDate, SortedADT MemberTree )
 {
 
 	this.projectTitle = projectTitle;
 	this.StartDateEndDate = StartDateEndDate;
+	this.MemberTree = MemberTree;
 	
 	
+	
+}
+
+public SortedADT getMemberTree() {
+	return MemberTree;
+}
+
+public void setMemberTree(SortedADT memberTree) {
+	MemberTree = memberTree;
 }
 
 public String getProjectTitle() {
