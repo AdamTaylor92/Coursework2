@@ -13,14 +13,14 @@ public class TeamMemberTest {
 
 		//tree for the projects
 		SortedADT Project = new BinarySearchTree();
-		SortedADT MemberTree = new BinarySearchTree();
+		
 		
 		int userInput = 0;
 
 do {
 		showMenu();
 		userInput = askForInput();
-		evalInput(userInput,Project, MemberTree);
+		evalInput(userInput,Project);
 	
 }
 while (userInput !=10); 
@@ -28,7 +28,7 @@ while (userInput !=10);
 
 	}
 	
-private static void evalInput(int userInput, SortedADT Project, SortedADT MemberTree) throws NotUniqueException {
+private static void evalInput(int userInput, SortedADT Project) throws NotUniqueException {
 		
 		switch(userInput)
 		{
@@ -40,27 +40,27 @@ private static void evalInput(int userInput, SortedADT Project, SortedADT Member
 					showProject(Project);
 					break;
 			case 3:
-					RemoveProject(Project, MemberTree);
+					RemoveProject(Project);
 					break;
 			case 4:
-					showAllProjects(Project, MemberTree);
+					showAllProjects(Project);
 					break;
 			case 5:
-					addMember(Project, MemberTree);
+					addMember(Project);
 					break;
 			case 6:
-					showMember(Project, MemberTree);
+					showMember(Project);
 					break;
 			case 7:
-					RemoveMember(Project, MemberTree);
+					RemoveMember(Project);
 					break;
 			case 8:
-					showAllMembers(Project, MemberTree);
+					showAllMembers(Project);
 					break;
 			case 10:
 				System.out.println("Are you sure you want to quit if, yes select 20"); 
 				userInput = askForInput();
-				evalInput(userInput, Project, MemberTree);
+				evalInput(userInput, Project);
 					break;
 			case 20:
 				System.out.println("Good Bye!");
@@ -76,18 +76,18 @@ private static void evalInput(int userInput, SortedADT Project, SortedADT Member
 
 
 
-private static void showAllProjects(SortedADT project, SortedADT MemberTree) {
+private static void showAllProjects(SortedADT project) {
 	System.out.println(project.toString()) ;
 	
 }
 
-private static void RemoveProject(SortedADT project, SortedADT MemberTree) {
+private static void RemoveProject(SortedADT project) {
 	try {
 		
 		String Name = Input.getString("Please enter the project name you wish to find ");
 		String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
 		
-		Project toBeRemoved =  new Project(Name, startDateEndDate,MemberTree);
+		Project toBeRemoved =  new Project(Name, startDateEndDate);
 		project.remove(toBeRemoved);
 		System.out.println(toBeRemoved.toString() + "has been removed");
 
@@ -106,7 +106,7 @@ private static void showProject(SortedADT project) {
 		String Name = Input.getString("Please enter the project name you wish to find ");
 		String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
 		
-		Project toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+		Project toBeFound =  new Project(Name, startDateEndDate);
 		project.find(toBeFound);
 		System.out.println(toBeFound.toString());
 		
@@ -123,10 +123,10 @@ private static void addProject(SortedADT project) {
 	try {
 		String Name = Input.getString("Please enter the Project name");
 		String startDateEndDate = Input.getString("PLease enter the Start and end dates in this format DD/MM/YY - DD/MM/YY ");
-		SortedADT MemberTree = new BinarySearchTree();
 		
 		
-		Project toBeAdded =  new Project(Name,startDateEndDate,MemberTree);
+		
+		Project toBeAdded =  new Project(Name,startDateEndDate);
 		project.insert(toBeAdded);
 		System.out.println(toBeAdded.toString()+ " has been sucsefully been addded");
 	
@@ -141,21 +141,21 @@ private static void addProject(SortedADT project) {
 
 
 
-private static void addMember(SortedADT project, SortedADT MemberTree) { 
+private static void addMember(SortedADT project) { 
 	
 	
 	String Name = ""; 
 	String startDateEndDate ="";
-	
-	Project toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+	Project toBeFound =  new Project(Name, startDateEndDate);
 	
 	
 	try {
 		System.out.println("\nFirst please enter the project you wish to add a member to");
 		Name = Input.getString("Please enter the project name you wish to find ");
 		startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
-		toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+		toBeFound =  new Project(Name, startDateEndDate);
 		project.find(toBeFound);
+		SortedADT MemberTree = toBeFound.getMemberTree();
 				
 			try {
 		
@@ -165,6 +165,7 @@ private static void addMember(SortedADT project, SortedADT MemberTree) {
 		
 					TeamMember toBeAdded =  new TeamMember(MName, EID, Department); //Member object to be added to the subtree for the project.
 					MemberTree.insert(toBeAdded);
+					toBeFound.setMemberTree(MemberTree);
 					System.out.println(toBeAdded.toString()+ "\n has been sucsefully been addded to project " + toBeFound.toString());
 
 		
@@ -181,12 +182,12 @@ private static void addMember(SortedADT project, SortedADT MemberTree) {
 	
 } 
 
-private static void showMember(SortedADT project, SortedADT MemberTree) {
+private static void showMember(SortedADT project) {
 
 	String Name = ""; 
 	String startDateEndDate ="";
 	
-	Project toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+	Project toBeFound =  new Project(Name, startDateEndDate);
 	
 	
 	try {
@@ -194,8 +195,9 @@ private static void showMember(SortedADT project, SortedADT MemberTree) {
 		System.out.println("\nFirst please enter the project you wish to add a member to");
 		Name = Input.getString("Please enter the project name you wish to find ");
 		startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
-		toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+		toBeFound =  new Project(Name, startDateEndDate);
 		project.find(toBeFound);
+		SortedADT MemberTree = toBeFound.getMemberTree();
 				
 			try {
 		
@@ -220,18 +222,19 @@ private static void showMember(SortedADT project, SortedADT MemberTree) {
 	}
 }
 
-private static void RemoveMember(SortedADT project, SortedADT MemberTree) {
+private static void RemoveMember(SortedADT project){
 	String Name = ""; 
 	String startDateEndDate ="";
-	Project toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+	Project toBeFound =  new Project(Name, startDateEndDate);
 	
 	
 	try {
 		System.out.println("\nFirst please enter the project you wish to add a member to");
 		Name = Input.getString("Please enter the project name you wish to find ");
 		startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
-		toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+		toBeFound =  new Project(Name, startDateEndDate);
 		project.find(toBeFound);
+		SortedADT MemberTree = toBeFound.getMemberTree();
 				
 			try {
 		
@@ -258,13 +261,11 @@ private static void RemoveMember(SortedADT project, SortedADT MemberTree) {
 
 }
 	
-private static void showAllMembers(SortedADT project, SortedADT MemberTree) {
+private static void showAllMembers(SortedADT project) {
 
 	String Name = ""; 
 	String startDateEndDate ="";
-
-	
-	Project toBeFound =  new Project(Name, startDateEndDate,MemberTree);
+	Project toBeFound =  new Project(Name, startDateEndDate);
 	
 	
 	try {
@@ -272,8 +273,10 @@ private static void showAllMembers(SortedADT project, SortedADT MemberTree) {
 		System.out.println("\nFirst please enter the project you wish to add a member to");
 		Name = Input.getString("Please enter the project name you wish to find ");
 		startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
-		toBeFound =  new Project(Name, startDateEndDate, MemberTree);
+		toBeFound =  new Project(Name, startDateEndDate);
 		project.find(toBeFound);
+		SortedADT MemberTree = toBeFound.getMemberTree();
+		
 				
 		System.out.println(MemberTree.toString());
 		

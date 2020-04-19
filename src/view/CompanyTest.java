@@ -87,7 +87,7 @@ public class CompanyTest{
 		
 	}
 
-	private static void showProject(SortedADT sorted, ) {
+	private static void showProject(SortedADT sorted ) {
 		
 		
 		
@@ -95,7 +95,7 @@ public class CompanyTest{
 			String Name = Input.getString("Please enter the project name you wish to find ");
 			String startDateEndDate = Input.getString("PLease enter the Start and end date in the format DD/MM/YY - DD/MM/YY ");
 			
-			Project toBeAdded =  new Project(Name, startDateEndDate, );
+			Project toBeAdded =  new Project(Name, startDateEndDate);
 			sorted.find(toBeAdded);
 			System.out.println(toBeAdded.toString());
 

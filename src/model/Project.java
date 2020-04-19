@@ -20,15 +20,14 @@ public class Project implements Comparable{
 		
 	}
 	
-public Project(String projectTitle, String StartDateEndDate, SortedADT MemberTree )
+public Project(String projectTitle, String StartDateEndDate)
 {
 
 	this.projectTitle = projectTitle;
 	this.StartDateEndDate = StartDateEndDate;
-	this.MemberTree = MemberTree;
+	this.MemberTree = new BinarySearchTree();
 	
-	
-	
+		
 }
 
 public SortedADT getMemberTree() {
